@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevShelf.API", "DevShelf.API\DevShelf.API.csproj", "{AAD53CD5-CE76-4263-BB1D-B649F742F427}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevShelf.API", "DevShelf.API\DevShelf.API.csproj", "{AAD53CD5-CE76-4263-BB1D-B649F742F427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevShelf.Domain", "DevShelf.Domain\DevShelf.Domain.csproj", "{52BD27FB-759B-4BE5-ADA2-855E4EB0E511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AAD53CD5-CE76-4263-BB1D-B649F742F427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD53CD5-CE76-4263-BB1D-B649F742F427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD53CD5-CE76-4263-BB1D-B649F742F427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52BD27FB-759B-4BE5-ADA2-855E4EB0E511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BD27FB-759B-4BE5-ADA2-855E4EB0E511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BD27FB-759B-4BE5-ADA2-855E4EB0E511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BD27FB-759B-4BE5-ADA2-855E4EB0E511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
