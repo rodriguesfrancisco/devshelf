@@ -8,14 +8,14 @@ namespace DevShelf.Domain.Entities
 {
     public class Book : BaseEntity
     {
-        public Book(string title, string author, int numberOfPages, string synopsis, string publisher, int categoryId)
+        public Book(string title, string author, int numberOfPages, string synopsis, string publisher, Category category)
         {
             Title = title;
             Author = author;
             NumberOfPages = numberOfPages;
             Synopsis = synopsis;
             Publisher = publisher;
-            CategoryId = categoryId;
+            Category = category;
         }
 
         protected Book () {}
@@ -25,6 +25,6 @@ namespace DevShelf.Domain.Entities
         public int NumberOfPages { get; private set; }
         public string Synopsis { get; private set; }
         public string Publisher { get; private set; }
-        public int CategoryId { get; private set; }
+        public Category Category { get; private set; }
     }
 }
