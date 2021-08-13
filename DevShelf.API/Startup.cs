@@ -1,6 +1,8 @@
+using DevShelf.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +29,8 @@ namespace DevShelf.API
         {
 
             services.AddControllers();
+            services.AddDbContext<DevShelfDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevShelfCs")));
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevShelf.API", Version = "v1" });
