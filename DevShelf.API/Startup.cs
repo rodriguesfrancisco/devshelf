@@ -1,4 +1,6 @@
+using DevShelf.Application.Commands.CreateBook;
 using DevShelf.Infrastructure.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +37,8 @@ namespace DevShelf.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DevShelf.API", Version = "v1" });
             });
+
+            services.AddMediatR(typeof(CreateBookCommand));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
