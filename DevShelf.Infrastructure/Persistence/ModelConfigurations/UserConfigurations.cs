@@ -14,6 +14,7 @@ namespace DevShelf.Infrastructure.Persistence.ModelConfigurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasKey(x => x.Id);
+            builder.Ignore(x => x.Notifications);
         }
     }
 }

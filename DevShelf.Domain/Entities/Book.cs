@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevShelf.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,23 +9,30 @@ namespace DevShelf.Domain.Entities
 {
     public class Book : BaseEntity
     {
-        public Book(string title, string author, int numberOfPages, string synopsis, string publisher, Category category)
+        public Book(string title, string author, int numberOfPages, string description, string publisher, Category category)
         {
-            Title = title;
-            Author = author;
+            Title = new Title(title);
+            Author = new Author(author);
             NumberOfPages = numberOfPages;
-            Synopsis = synopsis;
-            Publisher = publisher;
+            Description = new BookDescription(description);
+            Publisher = new Publisher(publisher);
             Category = category;
+
+            AddNotifications(
+                Title,
+                Author,
+                Description,
+                Publisher
+            );
         }
 
         protected Book () {}
 
-        public string Title { get; private set; }
-        public string Author { get; private set; }
+        public Title Title { get; private set; }
+        public Author Author { get; private set; }
         public int NumberOfPages { get; private set; }
-        public string Synopsis { get; private set; }
-        public string Publisher { get; private set; }
+        public BookDescription Description { get; private set; }
+        public Publisher Publisher { get; private set; }
         public Category Category { get; private set; }
     }
 }
