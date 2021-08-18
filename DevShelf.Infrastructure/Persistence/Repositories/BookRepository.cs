@@ -1,14 +1,7 @@
-﻿using Dapper;
-using DevShelf.Domain.Entities;
+﻿using DevShelf.Domain.Entities;
 using DevShelf.Domain.Repositories;
-using DevShelf.Domain.ValueObjects;
-using MediatR;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DevShelf.Infrastructure.Persistence.Repositories
@@ -29,13 +22,13 @@ namespace DevShelf.Infrastructure.Persistence.Repositories
             return result;
         }
 
-        public async Task Add(Book book)
+        public async Task AddAsync(Book book)
         {
             await _dbContext.Books.AddAsync(book);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<Category> FindCategory(int id)
+        public async Task<Category> FindCategoryAsync(int id)
         {
             return await _dbContext.Categories.FindAsync(id);
         }

@@ -10,8 +10,8 @@ namespace DevShelf.Domain.Repositories
     public interface IBookRepository
     {
         IEnumerable<Book> GetAllBooks();
-        Task Add(Book book);
-        Task<Category> FindCategory(int id);
+        Task AddAsync(Book book);
+        Task<Category> FindCategoryAsync(int id);
 
     }
 }

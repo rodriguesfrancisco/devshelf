@@ -19,7 +19,7 @@ namespace DevShelf.Application.Commands.CreateBook
             Category category;
             if(HasCategoryId(command))
             {
-                category = await _bookRepository.FindCategory(command.CategoryId.Value);
+                category = await _bookRepository.FindCategoryAsync(command.CategoryId.Value);
 
                 command.AddNotifications(new Contract<CreateBookCommand>()
                     .Requires()
@@ -36,7 +36,7 @@ namespace DevShelf.Application.Commands.CreateBook
             command.AddNotifications(book);
             if (!command.IsValid) return Unit.Value;
 
-            await _bookRepository.Add(book);
+            await _bookRepository.AddAsync(book);
 
             return Unit.Value;
         }
