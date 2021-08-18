@@ -1,12 +1,7 @@
 ﻿using DevShelf.Domain.Entities;
-using DevShelf.Infrastructure.Persistence;
+using DevShelf.Domain.Repositories;
 using Flunt.Validations;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -14,17 +9,17 @@ namespace DevShelf.Application.Commands.CreateBook
 {
     public class CreateBookHandler : IRequestHandler<CreateBookCommand, Unit>
     {
-        private DevShelfDbContext _dbContext;
-        public CreateBookHandler(DevShelfDbContext dbContext)
+        private readonly IBookRepository _bookRepository;
+        public CreateBookHandler(IBookRepository bookRepository)
         {
-            _dbContext = dbContext;
+            _bookRepository = bookRepository;
         }
         public async Task<Unit> Handle(CreateBookCommand command, CancellationToken cancellationToken)
         {
             Category category;
             if(HasCategoryId(command))
             {
-                category = await _dbContext.Categories.FindAsync(command.CategoryId);
+                category = await _bookRepository.FindCategory(command.CategoryId.Value);
 
                 command.AddNotifications(new Contract<CreateBookCommand>()
                     .Requires()
@@ -41,8 +36,7 @@ namespace DevShelf.Application.Commands.CreateBook
             command.AddNotifications(book);
             if (!command.IsValid) return Unit.Value;
 
-            await _dbContext.Books.AddAsync(book);
-            await _dbContext.SaveChangesAsync();
+            await _bookRepository.Add(book);
 
             return Unit.Value;
         }

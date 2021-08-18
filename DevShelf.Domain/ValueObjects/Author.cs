@@ -22,7 +22,9 @@ namespace DevShelf.Domain.ValueObjects
             Name = name;
         }
 
-        public string Name { get; private set; }
+        protected Author() { }
+
+        public string Name { get; protected set; }
 
     }
 }

@@ -28,7 +28,7 @@ namespace DevShelf.Domain.Entities
 
         protected Book () {}
 
-        public Title Title { get; private set; }
+        public Title Title { get; protected set; }
         public Author Author { get; private set; }
         public int NumberOfPages { get; private set; }
         public BookDescription Description { get; private set; }

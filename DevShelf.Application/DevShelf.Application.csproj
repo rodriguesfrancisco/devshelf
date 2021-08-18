@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DevShelf.Infrastructure\DevShelf.Infrastructure.csproj" />
+    <ProjectReference Include="..\DevShelf.Domain\DevShelf.Domain.csproj" />
   </ItemGroup>
 
 </Project>
