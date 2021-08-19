@@ -1,5 +1,7 @@
 using DevShelf.API.Extensions;
 using DevShelf.Application.Commands.CreateBook;
+using DevShelf.Domain.Services;
+using DevShelf.Infrastructure.Auth;
 using DevShelf.Infrastructure.Persistence;
 using DevShelf.Infrastructure.Queries.GetAllBooks;
 using MediatR;
@@ -36,6 +38,7 @@ namespace DevShelf.API
 
             services.AddMediatR(typeof(CreateBookCommand), typeof(GetAllBooksQuery));
             services.AddRepositories();
+            services.AddScoped<IAuthService, AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

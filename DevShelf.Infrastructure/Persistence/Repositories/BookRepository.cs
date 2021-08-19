@@ -8,11 +8,9 @@ namespace DevShelf.Infrastructure.Persistence.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        private readonly string _connectionString;
         private readonly DevShelfDbContext _dbContext;
         public BookRepository(IConfiguration configuration, DevShelfDbContext dbContext)
         {
-            _connectionString = configuration.GetConnectionString("DevShelfCs");
             _dbContext = dbContext;
         }
         public IEnumerable<Book> GetAllBooks()
