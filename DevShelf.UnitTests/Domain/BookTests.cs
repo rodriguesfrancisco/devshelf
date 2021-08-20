@@ -42,5 +42,47 @@ namespace DevShelf.UnitTests.Domain
             Assert.Empty(okBook.Notifications);
             Assert.True(okBook.IsValid);
         }
+
+        [Fact]
+        public void NewBookInvalidFields_Created_InvalidBook()
+        {
+            // Arrange
+            var invalidTitle = "IT";
+            var invalidAuthor = "I";
+            var numberOfPages = 300;
+            var invalidDescription = "ID";
+            var invalidPublisher = "I";
+            var category = new Category("Categoria de Teste");
+
+            var invalidTitleMessage = "Title length must be greater than or equals 3";
+            var invalidAuthorMessage = "Author Name length must be greather than or equals 2";
+            var invalidDescriptionMessage = "Book Description length must be greater than or equals 10";
+            var invalidPublisherMessage = "Publisher length must be greater than or equals 2";
+            var expectedErrorMessagesList = new List<string>()
+            {
+                invalidTitleMessage,
+                invalidAuthorMessage,
+                invalidDescriptionMessage,
+                invalidPublisherMessage
+            };
+
+            var invalidBook = new Book(
+                invalidTitle,
+                invalidAuthor,
+                numberOfPages,
+                invalidDescription,
+                invalidPublisher,
+                category
+            );
+
+            // Act
+
+            // Assert
+            Assert.False(invalidBook.IsValid);
+            foreach(var message in expectedErrorMessagesList)
+            {
+                Assert.Contains(message, invalidBook.Notifications.Select(x => x.Message).ToList());
+            }
+        }
     }
 }
