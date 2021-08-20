@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevShelf.API", "DevShelf.AP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevShelf.Domain", "DevShelf.Domain\DevShelf.Domain.csproj", "{52BD27FB-759B-4BE5-ADA2-855E4EB0E511}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevShelf.Infrastructure", "DevShelf.Infrastructure\DevShelf.Infrastructure.csproj", "{4267231D-F1A6-497F-AA04-EAE70AF70B89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevShelf.Infrastructure", "DevShelf.Infrastructure\DevShelf.Infrastructure.csproj", "{4267231D-F1A6-497F-AA04-EAE70AF70B89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevShelf.Application", "DevShelf.Application\DevShelf.Application.csproj", "{335A0ED2-3CA6-40F7-8B7F-9E09B8A09D63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevShelf.Application", "DevShelf.Application\DevShelf.Application.csproj", "{335A0ED2-3CA6-40F7-8B7F-9E09B8A09D63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevShelf.UnitTests", "DevShelf.UnitTests\DevShelf.UnitTests.csproj", "{733096A6-E533-4342-BD56-CD43A10BE4A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{335A0ED2-3CA6-40F7-8B7F-9E09B8A09D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{335A0ED2-3CA6-40F7-8B7F-9E09B8A09D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{335A0ED2-3CA6-40F7-8B7F-9E09B8A09D63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{733096A6-E533-4342-BD56-CD43A10BE4A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{733096A6-E533-4342-BD56-CD43A10BE4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{733096A6-E533-4342-BD56-CD43A10BE4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{733096A6-E533-4342-BD56-CD43A10BE4A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
