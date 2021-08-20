@@ -2,12 +2,14 @@
 using DevShelf.Application.Commands.CreateBook;
 using DevShelf.Infrastructure.Queries.GetAllBooks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace DevShelf.API.Controllers
 {
     [Route("api/books")]
+    [Authorize]
     public class BooksController : ControllerBase
     {
         private IMediator _mediator;
@@ -17,17 +19,17 @@ namespace DevShelf.API.Controllers
         }
 
         [HttpGet]
-        public Task<IActionResult> GetAllBooks()
+        public async Task<IActionResult> GetAllBooks()
         {
             var query = new GetAllBooksQuery();
 
-            return this.ProcessCommand(query, _mediator);
+            return await this.ProcessCommand(query, _mediator);
         }
 
         [HttpPost]
-        public Task<IActionResult> CreateBook([FromBody] CreateBookCommand command)
+        public async Task<IActionResult> CreateBook([FromBody] CreateBookCommand command)
         {
-            return this.ProcessCommand(command, _mediator);
+            return await this.ProcessCommand(command, _mediator);
         }
     }
 }

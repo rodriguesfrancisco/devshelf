@@ -15,6 +15,18 @@ namespace DevShelf.Infrastructure.Persistence.ModelConfigurations
         {
             builder.HasKey(x => x.Id);
             builder.Ignore(x => x.Notifications);
+
+            builder.OwnsOne(x => x.Email)
+               .Ignore(x => x.Notifications)
+               .Property(x => x.Value)
+               .HasColumnName("Email")
+               .HasMaxLength(150);
+
+            builder.OwnsOne(x => x.Name)
+               .Ignore(x => x.Notifications)
+               .Property(x => x.Value)
+               .HasColumnName("Name")
+               .HasMaxLength(240);
         }
     }
 }

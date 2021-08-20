@@ -20,9 +20,17 @@ namespace DevShelf.Application.Commands.CreateUser
             _userRepository = userRepository;
             _authService = authService;
         }
-        public Task<Unit> Handle(CreateUserCommand command, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateUserCommand command, CancellationToken cancellationToken)
         {
-            var user = new User()
+            var passwordHash = _authService.ComputeSha256Hash(command.Password);
+            var user = new User(command.Name, command.Email, passwordHash, "USER");
+
+            command.AddNotifications(user);
+            if (!command.IsValid) return Unit.Value;
+
+            await _userRepository.AddAsync(user);
+
+            return Unit.Value;
         }
     }
 }
