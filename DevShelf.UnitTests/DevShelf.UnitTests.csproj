@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Commands\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DevShelf.Application\DevShelf.Application.csproj" />
     <ProjectReference Include="..\DevShelf.Domain\DevShelf.Domain.csproj" />
   </ItemGroup>
