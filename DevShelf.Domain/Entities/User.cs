@@ -19,6 +19,7 @@ namespace DevShelf.Domain.Entities
             Password = password;
             Role = role;
             CreatedAt = DateTime.Now;
+            UserBooks = new List<UserBook>();
         }
 
         protected User () { }
@@ -28,5 +29,12 @@ namespace DevShelf.Domain.Entities
         public string Password { get; private set; }
         public string Role { get; private set; }
         public DateTime CreatedAt { get; private set; }
+        public List<UserBook> UserBooks { get; private set; }
+
+        public void AddBook(Book book)
+        {
+            var userBook = new UserBook(this, book);
+            UserBooks.Add(userBook);
+        }
     }
 }
