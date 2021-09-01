@@ -11,5 +11,7 @@ namespace DevShelf.Domain.Repositories
     {
         Task AddAsync(User user);
         Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash);
+        Task<User> FindUserByEmailAsync(string email);
+        Task SaveChangesAsync();
     }
 }

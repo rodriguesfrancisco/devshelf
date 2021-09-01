@@ -1,4 +1,5 @@
 ﻿using DevShelf.Domain.Entities;
+using DevShelf.Domain.Enums;
 using DevShelf.Domain.Repositories;
 using DevShelf.Domain.Services;
 using MediatR;
@@ -23,7 +24,7 @@ namespace DevShelf.Application.Commands.CreateUser
         public async Task<Unit> Handle(CreateUserCommand command, CancellationToken cancellationToken)
         {
             var passwordHash = _authService.ComputeSha256Hash(command.Password);
-            var user = new User(command.Name, command.Email, passwordHash, "USER");
+            var user = new User(command.Name, command.Email, passwordHash, UserRoleEnum.USER.ToString());
 
             command.AddNotifications(user);
             if (!command.IsValid) return Unit.Value;

@@ -10,6 +10,6 @@ namespace DevShelf.Domain.Entities
     public abstract class BaseEntity : Notifiable<Notification>
     {
         protected BaseEntity () {}
-        public int Id { get; private set; }
+        public virtual int Id { get; private set; }
     }
 }

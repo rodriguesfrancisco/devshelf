@@ -22,11 +22,25 @@ namespace DevShelf.Infrastructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
+        public Task<User> GetUserByEmailAndPasswordAsync(string email, string passwordHash)
         {
-            return await _dbContext
+            return _dbContext
                 .Users
                 .SingleOrDefaultAsync(u => u.Email.Value == email && u.Password == passwordHash);
+        }
+
+        public Task<User> FindUserByEmailAsync(string email)
+        {
+            return _dbContext
+                .Users
+                .Include(u => u.UserBooks)
+                    .ThenInclude(ub => ub.Book)
+                .SingleOrDefaultAsync(u => u.Email.Value == email);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

@@ -26,9 +26,14 @@ namespace DevShelf.Infrastructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<Category> FindCategoryAsync(int id)
+        public ValueTask<Category> FindCategoryAsync(int id)
         {
-            return await _dbContext.Categories.FindAsync(id);
+            return _dbContext.Categories.FindAsync(id);
+        }
+
+        public ValueTask<Book> FindBookByIdAsync(int id)
+        {
+            return _dbContext.Books.FindAsync(id);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DevShelf.Domain.Repositories
     {
         IEnumerable<Book> GetAllBooks();
         Task AddAsync(Book book);
-        Task<Category> FindCategoryAsync(int id);
-
+        ValueTask<Category> FindCategoryAsync(int id);
+        ValueTask<Book> FindBookByIdAsync(int id);
     }
 }

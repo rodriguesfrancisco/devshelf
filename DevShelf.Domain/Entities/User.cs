@@ -22,7 +22,10 @@ namespace DevShelf.Domain.Entities
             UserBooks = new List<UserBook>();
         }
 
-        protected User () { }
+        protected User () 
+        {
+            
+        }
 
         public UserName Name { get; private set; }
         public Email Email { get; private set; }
@@ -33,8 +36,19 @@ namespace DevShelf.Domain.Entities
 
         public void AddBook(Book book)
         {
-            var userBook = new UserBook(this, book);
-            UserBooks.Add(userBook);
+            if(UserBooks is not null)
+            {
+                var userAlreadyContainsBook = UserBooks.Exists(ub => ub.Book.Id == book.Id);
+                if (userAlreadyContainsBook)
+                {
+                    AddNotification("UserBook", "User Already Contains the book");
+
+                    return;
+                }
+                var userBook = new UserBook(this, book);
+                UserBooks.Add(userBook);
+            }
+            
         }
     }
 }

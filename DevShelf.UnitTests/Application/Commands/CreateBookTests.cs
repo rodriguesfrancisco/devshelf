@@ -51,7 +51,7 @@ namespace DevShelf.UnitTests.Application.Commands
                 Publisher = "Test Publisher"
             };
             var bookRepositoryMock = new Mock<IBookRepository>();
-            bookRepositoryMock.Setup(br => br.FindCategoryAsync(createBookCommand.CategoryId.Value)).Returns(Task.FromResult<Category>(null));
+            bookRepositoryMock.Setup(br => br.FindCategoryAsync(createBookCommand.CategoryId.Value)).Returns(null);
             var createBookCommandHandler = new CreateBookHandler(bookRepositoryMock.Object);
             var categoryNotFoundErrorMessage = "Category not found";
 
