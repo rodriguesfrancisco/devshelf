@@ -1,4 +1,5 @@
-﻿using Flunt.Validations;
+﻿using DevShelf.Domain.Enums;
+using Flunt.Validations;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,13 @@ namespace DevShelf.Application.Commands.AddUserBook
     {
         public string UserEmail { get; set; }
         public int BookId { get; set; }
+        public ReadingStatusEnum ReadingStatus { get; set; }
         public override void Validate()
         {
             AddNotifications(new Contract<AddUserBookCommand>()
                 .Requires()
-                .IsNotNull(UserEmail, "UserEmail", "User Email should not be empty")
+                .IsNotNullOrEmpty(UserEmail, "UserEmail", "User Email is required")
+                .IsNotNull(ReadingStatus, "ReadingStatus", "Reading Status is required")
             );
         }
     }

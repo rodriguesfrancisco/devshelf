@@ -31,7 +31,7 @@ namespace DevShelf.Application.Commands.AddUserBook
             );
             if (!command.IsValid) return Unit.Value;
 
-            user.AddBook(book);
+            user.AddBook(book, command.ReadingStatus);
             command.AddNotifications(user);
             if (!command.IsValid) return Unit.Value;
 

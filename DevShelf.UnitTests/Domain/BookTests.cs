@@ -21,16 +21,15 @@ namespace DevShelf.UnitTests.Domain
             var publisher = "Publisher de teste";
             var category = new Category("Categoria de Teste");
 
+            // Act
             var okBook = new Book(
-                title, 
-                author, 
-                numberOfPages, 
+                title,
+                author,
+                numberOfPages,
                 description,
                 publisher,
                 category
             );
-
-            // Act
 
             // Assert
             Assert.Equal(okBook.Title.Value, title);
@@ -66,6 +65,7 @@ namespace DevShelf.UnitTests.Domain
                 invalidPublisherMessage
             };
 
+            // Act
             var invalidBook = new Book(
                 invalidTitle,
                 invalidAuthor,
@@ -74,8 +74,6 @@ namespace DevShelf.UnitTests.Domain
                 invalidPublisher,
                 category
             );
-
-            // Act
 
             // Assert
             Assert.False(invalidBook.IsValid);

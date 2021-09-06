@@ -1,4 +1,5 @@
-﻿using DevShelf.Domain.ValueObjects;
+﻿using DevShelf.Domain.Enums;
+using DevShelf.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace DevShelf.Domain.Entities
         public DateTime CreatedAt { get; private set; }
         public List<UserBook> UserBooks { get; private set; }
 
-        public void AddBook(Book book)
+        public void AddBook(Book book, ReadingStatusEnum readingStatus)
         {
             if(UserBooks is not null)
             {
@@ -45,7 +46,7 @@ namespace DevShelf.Domain.Entities
 
                     return;
                 }
-                var userBook = new UserBook(this, book);
+                var userBook = new UserBook(this, book, readingStatus);
                 UserBooks.Add(userBook);
             }
             
